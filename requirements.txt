@@ -4,6 +4,7 @@ streamlit
 joblib
 pandas
 scikit-learn
+xgboost
 praat-parselmouth
 sounddevice
 scipy
