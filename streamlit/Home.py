@@ -25,7 +25,7 @@ st.caption('2022 Medlytics; Christine Tian, Daniel Kim, Harshini Magesh, Shreya 
 # st.video('video url')
 
 # Loading data
-DATA_URL = '../data/parkinsons_updrs.data'
+DATA_URL = 'data/parkinsons_updrs.data'
 
 @st.cache
 def load_data():
