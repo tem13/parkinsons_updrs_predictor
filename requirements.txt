@@ -3,6 +3,7 @@ setuptools==57
 streamlit
 joblib
 pandas
+scikit-learn
 praat-parselmouth
 sounddevice
 scipy
