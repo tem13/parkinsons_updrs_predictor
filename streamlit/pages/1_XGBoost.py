@@ -121,7 +121,7 @@ def play_audio(path):
 
 # Upload and save file
 def save_uploadedfile(uploadedfile):
-    path = os.path.join('streamlit/uploaded_data', uploadedfile.name)
+    path = os.path.join('uploaded_data', uploadedfile.name)
     with open(path, 'wb') as f:
         f.write(uploadedfile.getbuffer())
         return path
@@ -189,7 +189,7 @@ upload_form()
 
 # recording_type = st.selectbox('Choose a method to submit a sample', ('Record now', 'Upload a file'))
 # if (recording_type == 'Record now'):
-#     filePath = 'streamlit/uploaded_data/recording.wav'
+#     filePath = 'uploaded_data/recording.wav'
     
 #     FS = 44100 # sample rate
 #     DURATION = 10
