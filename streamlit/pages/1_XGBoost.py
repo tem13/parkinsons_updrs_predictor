@@ -18,7 +18,7 @@ import parselmouth
 from parselmouth.praat import call
 
 # Import audio tools
-import sounddevice as sd
+# import sounddevice as sd
 from scipy.io.wavfile import write
 from pydub import AudioSegment
 
@@ -45,20 +45,20 @@ scaler_female = joblib.load('saved_scalers/xgboost_female')
 # st.markdown('This is an explanation of our model.')
 
 # Model metrics
-# st.header('Metrics')
-# col1, col2 = st.columns(2)
-# with col1:
-#     st.subheader('Male')
-#     st.markdown('R2_Score: 0.9038128322405257')
-#     st.markdown('MAE: 2.166250101843663')
-#     st.markdown('MSE: 8.609510825774194')
-#     st.markdown('RMSE: 2.9040892804148264')
-# with col2:
-#     st.subheader('Female')
-#     st.markdown('R2_Score: 0.9060637578606281')
-#     st.markdown('MAE: 2.2711339064800242')
-#     st.markdown('MSE: 8.319370597285047')
-#     st.markdown('RMSE: 2.8784916064363575')
+st.header('Metrics')
+col1, col2 = st.columns(2)
+with col1:
+    st.subheader('Male')
+    st.markdown('R2_Score: 0.9038128322405257')
+    st.markdown('MAE: 2.166250101843663')
+    st.markdown('MSE: 8.609510825774194')
+    st.markdown('RMSE: 2.9040892804148264')
+with col2:
+    st.subheader('Female')
+    st.markdown('R2_Score: 0.9060637578606281')
+    st.markdown('MAE: 2.2711339064800242')
+    st.markdown('MSE: 8.319370597285047')
+    st.markdown('RMSE: 2.8784916064363575')
 
 # Data processing
 train_features = ['age', 'Jitter(%)', 'Jitter(Abs)', 'Jitter:RAP', 'Jitter:PPQ5', 'Jitter:DDP',
@@ -170,39 +170,39 @@ def upload_form():
             if upload_form_submitted:
                 predict_sample(filePath, age, sex)
 
-def record_form(path):
-    if os.path.exists(path):
-        play_audio(path)
+# def record_form(path):
+#     if os.path.exists(path):
+#         play_audio(path)
 
-        with st.form('form'):
-            age = st.number_input('Enter your age', step=1)
-            sex = st.selectbox('Select your sex', ('Male', 'Female'))
+#         with st.form('form'):
+#             age = st.number_input('Enter your age', step=1)
+#             sex = st.selectbox('Select your sex', ('Male', 'Female'))
             
-            record_form_submitted = st.form_submit_button('Submit')
+#             record_form_submitted = st.form_submit_button('Submit')
 
-            if record_form_submitted:
-                predict_sample(path, age, sex)
+#             if record_form_submitted:
+#                 predict_sample(path, age, sex)
 
 # Try it out!
 st.header('Try it out!')
+upload_form()
 
-recording_type = st.selectbox('Choose a method to submit a sample', ('Record now', 'Upload a file'))
-if (recording_type == 'Record now'):
-    filePath = 'streamlit/uploaded_data/recording.wav'
+# recording_type = st.selectbox('Choose a method to submit a sample', ('Record now', 'Upload a file'))
+# if (recording_type == 'Record now'):
+#     filePath = 'streamlit/uploaded_data/recording.wav'
     
-    FS = 44100 # sample rate
-    DURATION = 10
+#     FS = 44100 # sample rate
+#     DURATION = 10
 
-    if st.button('Record your voice'):
-        try:
-            myrecording = sd.rec(int(DURATION * FS), samplerate=FS, channels=2)
-            with st.spinner('Say "aaah..." at a constant pitch and volume! Recording for 10 seconds...'):
-                sd.wait()  # Wait until recording is finished
-            st.success('Recording finished!')
-            write(filePath, FS, myrecording)
-            record_form(filePath)
-        except:
-            pass
-
-else:
-    upload_form()
+#     if st.button('Record your voice'):
+#         try:
+#             myrecording = sd.rec(int(DURATION * FS), samplerate=FS, channels=2)
+#             with st.spinner('Say "aaah..." at a constant pitch and volume! Recording for 10 seconds...'):
+#                 sd.wait()  # Wait until recording is finished
+#             st.success('Recording finished!')
+#             write(filePath, FS, myrecording)
+#             record_form(filePath)
+#         except:
+#             pass
+# else:
+#     upload_form()
