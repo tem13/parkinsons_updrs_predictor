@@ -1,7 +1,6 @@
 setuptools==57
 
 streamlit
-os
 joblib
 pandas
 praat-parselmouth
