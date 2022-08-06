@@ -121,7 +121,7 @@ def play_audio(path):
 
 # Upload and save file
 def save_uploadedfile(uploadedfile):
-    path = os.path.join(uploadedfile.name)
+    path = os.path.join('streamlit/uploaded_data', uploadedfile.name)
     with open(path, 'wb') as f:
         f.write(uploadedfile.getbuffer())
         return path
@@ -155,7 +155,7 @@ def predict_sample(path, age, sex):
 
 # Forms
 def upload_form():
-    datafile = st.file_uploader('Upload a voice recording',type=['wav'])
+    datafile = st.file_uploader('Upload a voice recording', type=['wav'])
     if datafile is not None:
         filePath = save_uploadedfile(datafile)
 
