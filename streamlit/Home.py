@@ -46,5 +46,5 @@ if st.checkbox('Show raw data', value=False):
         st.subheader('Raw data: female')
         st.write(data[data['sex'] == 1])
     else:
-        st.subheader('Raw data - male & female')
+        st.subheader('Raw data: male & female')
         st.write(data)

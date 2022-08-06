@@ -155,15 +155,16 @@ def predict_sample(path, age, sex):
 
 # Forms
 def upload_form():
-    datafile = st.file_uploader('Upload a voice recording', type=['wav'])
+    st.markdown('Record a ~20 second file of a sustained /a/ sound')
+    datafile = st.file_uploader('Upload your file in .wav format', type=['wav'])
     if datafile is not None:
         filePath = save_uploadedfile(datafile)
 
         play_audio(filePath)
 
         with st.form('form'):
-            age = st.number_input('Enter your age', step=1)
-            sex = st.selectbox('Select your sex', ('Male', 'Female'))
+            age = st.number_input('Age', step=1)
+            sex = st.selectbox('Sex', ('Male', 'Female'))
             
             upload_form_submitted = st.form_submit_button('Submit')
 
